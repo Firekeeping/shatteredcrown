@@ -1,5 +1,6 @@
 name: Capture Shattered Crown v531
 
+# Recovery retriggered after local archive verification on 2026-09-02.
 on:
   workflow_dispatch:
   push:
