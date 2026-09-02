@@ -22,7 +22,9 @@ jobs:
         run: |
           rm -rf compiled-live-v531
           mkdir -p compiled-live-v531
-          wget --mirror --page-requisites --convert-links --adjust-extension --no-parent             --domains shattered-crown-tactics.firekeeping.chatgpt.site             --directory-prefix=compiled-live-v531             https://shattered-crown-tactics.firekeeping.chatgpt.site/
+          wget --mirror --page-requisites --convert-links --adjust-extension --no-parent             --domains shattered-crown-tactics.firekeeping.chatgpt.site             --directory-prefix=compiled-live-v531             https://shattered-crown-tactics.firekeeping.chatgpt.site/ || wget_status=$?
+          test -s compiled-live-v531/shattered-crown-tactics.firekeeping.chatgpt.site/index.html
+          echo "wget status: ${wget_status:-0}; verified recovered index.html"
           {
             echo "# Version 531 recovery manifest"
             echo
