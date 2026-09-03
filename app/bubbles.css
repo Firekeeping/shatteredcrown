@@ -1,0 +1,44 @@
+.speech-bubble {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: 88%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  max-width: 150px;
+  padding: 6px 9px;
+  border: 1px solid #8c805f;
+  border-radius: 10px;
+  background: #f4ecd7;
+  color: #201d17;
+  font: 700 10px/1.2 Arial, sans-serif;
+  text-align: center;
+  filter: none;
+  box-shadow: 0 4px 10px #0008;
+  animation: bubble-in .16s ease-out;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #f4ecd7;
+}
+
+@keyframes bubble-in {
+  from { opacity: 0; transform: translate(-50%, 5px) scale(.9); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.cell.area-preview { background:#cf4d334f!important; box-shadow:inset 0 0 0 2px #ffbf72!important; z-index:2; }
+.cell.knock-preview { background:#6ab4dc66!important; box-shadow:inset 0 0 0 3px #b9eaff!important; }
+.cell.burning-ground { background:radial-gradient(circle,#ffcc5966 0 20%,#dc3c2677 45%,#50181188 80%)!important; animation:groundfire .65s ease-in-out infinite alternate; }
+.cell.burning-ground::after { content:"FIRE"; position:absolute; left:50%; bottom:4px; transform:translateX(-50%); color:#ffe39b; font:700 7px Arial; letter-spacing:.12em; text-shadow:0 1px 3px #000; z-index:1; }
+@keyframes groundfire { to { filter:brightness(1.22); } }
+.status-icon { position:absolute; left:-4px; top:0; width:19px; height:19px; border-radius:50%; background:#6c56a8; border:1px solid #d8ccff; color:#fff; display:grid; place-items:center; font:12px Arial; z-index:5; }
+.inventory-menu { padding:8px; border:1px solid #4d493d; background:#141713; }
+.inventory-menu > small { display:block; padding:6px; color:#888; font:10px Arial; }
+.inventory-menu button { width:100%; background:#263022; }

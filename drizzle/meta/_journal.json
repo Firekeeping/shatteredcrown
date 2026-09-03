@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1788102242485,
+      "tag": "0000_red_sentinel",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788220378822,
+      "tag": "0001_tranquil_marvel_zombies",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788233972997,
+      "tag": "0002_powerful_stryfe",
+      "breakpoints": true
+    }
+  ]
+}

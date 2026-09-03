@@ -1,0 +1,1 @@
+ALTER TABLE `multiplayer_sessions` ADD `guest_connected_at` integer;

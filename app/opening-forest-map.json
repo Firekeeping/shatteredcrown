@@ -1,0 +1,1322 @@
+{
+  "format": "shattered-crown-map",
+  "version": 3,
+  "name": "New Encounter Map",
+  "width": 20,
+  "height": 16,
+  "tiles": [
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0,
+      "marker": {
+        "kind": "enemy-spawn",
+        "group": "wolfs"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "ruin",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dirt",
+      "elevation": 0,
+      "marker": {
+        "kind": "discovery",
+        "label": "Animal Tracks"
+      }
+    },
+    {
+      "kind": "dirt",
+      "elevation": 0,
+      "marker": {
+        "kind": "discovery",
+        "label": "Animal Tracks"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dirt",
+      "elevation": 0,
+      "marker": {
+        "kind": "discovery",
+        "label": "Animal Tracks"
+      }
+    },
+    {
+      "kind": "dirt",
+      "elevation": 0,
+      "marker": {
+        "kind": "discovery",
+        "label": "Animal Tracks"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0,
+      "marker": {
+        "kind": "party-start"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0,
+      "marker": {
+        "kind": "party-start"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0,
+      "marker": {
+        "kind": "party-start"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0,
+      "marker": {
+        "kind": "party-start"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,1455 @@
+{
+  "format": "shattered-crown-map",
+  "version": 3,
+  "name": "New Encounter Map",
+  "width": 20,
+  "height": 16,
+  "tiles": [
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0,
+      "marker": {
+        "kind": "enemy-spawn",
+        "group": "wolf start 2"
+      }
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "water",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "difficult",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0,
+      "marker": {
+        "kind": "enemy-spawn",
+        "group": "wolf start 3"
+      }
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0,
+      "marker": {
+        "kind": "enemy-spawn",
+        "group": "Wolf start"
+      }
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0,
+      "marker": {
+        "kind": "npc-spawn",
+        "group": "villager 3"
+      }
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "barricade",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "barricade",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0,
+      "marker": {
+        "kind": "npc-spawn",
+        "group": "Villager 1"
+      }
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0,
+      "marker": {
+        "kind": "npc-spawn",
+        "group": "villager 2"
+      }
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "barricade",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "barricade",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0
+    },
+    {
+      "kind": "dungeon",
+      "elevation": 0,
+      "marker": {
+        "kind": "npc-spawn",
+        "group": "Villager 4"
+      }
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "grass",
+      "elevation": 0
+    },
+    {
+      "kind": "stone",
+      "elevation": 1
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0,
+      "marker": {
+        "kind": "party-start",
+        "label": "Part start"
+      }
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    },
+    {
+      "kind": "tree",
+      "elevation": 0
+    },
+    {
+      "kind": "forest",
+      "elevation": 0
+    }
+  ],
+  "edges": [
+    {
+      "x": 8,
+      "y": 7,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 11,
+      "y": 7,
+      "side": "n",
+      "kind": "door"
+    },
+    {
+      "x": 11,
+      "y": 12,
+      "side": "n",
+      "kind": "door"
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "side": "w",
+      "kind": "door"
+    },
+    {
+      "x": 14,
+      "y": 9,
+      "side": "w",
+      "kind": "door"
+    },
+    {
+      "x": 12,
+      "y": 7,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 13,
+      "y": 7,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 14,
+      "y": 7,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 14,
+      "y": 8,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 14,
+      "y": 10,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 14,
+      "y": 11,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 12,
+      "y": 12,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 10,
+      "y": 12,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 8,
+      "y": 12,
+      "side": "n",
+      "kind": "wall"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 8,
+      "y": 10,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "side": "w",
+      "kind": "wall"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "side": "w",
+      "kind": "wall"
+    }
+  ]
+}
