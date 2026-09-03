@@ -39,8 +39,9 @@ if (missingAssets.length) {
 
 // Equipment and effect URLs are assembled from validated registry values at runtime.
 // Keep those families in addition to assets named literally in the source.
+const equipmentSprite = /^(?:walker|lark|gromm|rowan|alric|veyra|shade|cinder|tenzin|garran|ash|vesper)(?:-(?:ballcap|wifebeater|lightsaber|awp|deagle))*-sprites\.png$/;
 const isDynamicRuntimeAsset = (asset) =>
-  /(?:^|\/)[^/]*-sprites(?:-[^.]*)?\.[^.]+$/.test(asset) ||
+  equipmentSprite.test(asset) ||
   /(?:^|\/)vfx-[^/]+\.[^.]+$/.test(asset) ||
   asset.startsWith("audio/");
 

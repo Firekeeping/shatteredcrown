@@ -7,7 +7,7 @@ test("deploy preparation retains literal and dynamic runtime assets", async () =
 
   assert.match(script, /Source references missing public assets/);
   assert.match(script, /asset\.includes\("\$\{"\)/);
-  assert.match(script, /-sprites/);
+  assert.match(script, /equipmentSprite/);
   assert.match(script, /vfx-/);
   assert.match(script, /audio\//);
 
