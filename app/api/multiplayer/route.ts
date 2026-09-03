@@ -70,6 +70,8 @@ export async function POST(request: Request) {
   if (!session) return json({ error: "Session expired or does not exist." }, 404);
   if (body.op === "publish") {
     if (!authorized(session, supplied, "host") || !body.snapshot) return json({ error: "Host authorization failed." }, 403);
+    if (session.command_seq > session.handled_seq)
+      return json({ error: "The guest turn is still updating. Host publishing will resume when it is committed." }, 409);
     await db.prepare("UPDATE multiplayer_sessions SET snapshot = ?, hero_ids = ?, revision = revision + 1, updated_at = ? WHERE id = ?")
       .bind(JSON.stringify(body.snapshot), JSON.stringify(Array.isArray(body.heroIds) ? body.heroIds : []), now, id).run();
     return json({ ok: true, revision: session.revision + 1 });
@@ -90,8 +92,14 @@ export async function POST(request: Request) {
   }
   if (body.op === "resolve") {
     if (!authorized(session, supplied, "host") || !body.snapshot || !Number.isInteger(body.seq)) return json({ error: "Host authorization failed." }, 403);
-    await db.prepare("UPDATE multiplayer_sessions SET snapshot = ?, hero_ids = ?, revision = revision + 1, handled_seq = MAX(handled_seq, ?), updated_at = ? WHERE id = ?")
-      .bind(JSON.stringify(body.snapshot), JSON.stringify(Array.isArray(body.heroIds) ? body.heroIds : []), body.seq, now, id).run();
+    const pendingCommand = parseJson<Record<string, unknown> | null>(session.command_json, null);
+    if (session.command_seq <= session.handled_seq || Number(body.seq) !== session.command_seq || pendingCommand?.seq !== session.command_seq)
+      return json({ error: "That guest action is no longer pending. Both screens are resyncing." }, 409);
+    if (pendingCommand.type === "state" && pendingCommand.baseRevision !== session.revision)
+      return json({ error: "The shared game changed before that guest turn could commit. Both screens are resyncing." }, 409);
+    const result = await db.prepare("UPDATE multiplayer_sessions SET snapshot = ?, hero_ids = ?, revision = revision + 1, handled_seq = ?, command_json = NULL, updated_at = ? WHERE id = ? AND revision = ? AND command_seq = ? AND handled_seq < ?")
+      .bind(JSON.stringify(body.snapshot), JSON.stringify(Array.isArray(body.heroIds) ? body.heroIds : []), body.seq, now, id, session.revision, body.seq, body.seq).run();
+    if (!result.meta.changes) return json({ error: "That guest action was already handled. Both screens are resyncing." }, 409);
     return json({ ok: true, revision: session.revision + 1, handledSeq: Math.max(session.handled_seq, Number(body.seq)) });
   }
   if (body.op === "assign") {
