@@ -2298,7 +2298,8 @@ footer {
 .one-true-flag::before { content:""; position:absolute; left:6px; top:1px; width:3px; height:36px; border-radius:2px; background:linear-gradient(90deg,#60431b,#f4d984 55%,#6e4b1e); }
 .one-true-flag::after { content:"1"; position:absolute; left:8px; top:3px; width:22px; height:17px; display:grid; place-items:center; clip-path:polygon(0 0,100% 8%,78% 50%,100% 92%,0 100%); background:linear-gradient(135deg,#f6d45d,#9e621c); color:#2a1604; font:900 10px Georgia; }
 .flag-relic-bearer { filter:drop-shadow(0 0 5px #ffd75c) drop-shadow(0 0 10px #ff9f2b99); }
-.dust2-carried-flag { position:absolute; z-index:12; right:-8px; top:-28px; display:grid; justify-items:center; pointer-events:none; }
+.dust2-carried-flag { position:absolute; z-index:12; right:-5px; top:-9px; width:24px; height:42px; display:grid; justify-items:center; pointer-events:none; }
+.dust2-carried-flag img { width:24px; height:38px; object-fit:contain; filter:drop-shadow(0 1px 2px #000); }
 .dust2-carried-flag small { margin-top:-3px; padding:1px 3px; background:#090806e8; color:#ffe290; font:700 6px Arial; }
 .dust2-objective-panel { display:grid; gap:6px; margin:8px 0; padding:8px; border:1px solid #ae8034; background:linear-gradient(145deg,#281c0d,#11130f); color:#ead9b3; }
 .dust2-objective-panel > b { color:#ffd875; font:800 9px Arial; letter-spacing:.1em; }
@@ -5273,6 +5274,10 @@ footer {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.equipped-item-visual.one-true-flag-equipped { inset:-8px -4px 0 20px; background-image:url("/one-true-flag-spear.png"); }
+.dust2-dome-corpse { position:absolute; z-index:8; inset:-15px; pointer-events:none; background:url("/dust2-fallen-counter-dungeoneer.png") center / contain no-repeat; filter:drop-shadow(0 3px 3px #000b); }
+.dust2-trash-wizard { position:absolute; z-index:14; inset:-32px -12px 0; cursor:pointer; background:url("/trash-wizard.png") center bottom / contain no-repeat; filter:drop-shadow(0 3px 4px #000c); }
+.dropped-item-token.dragon-glass-awp-token { inset:25px 2px 2px; background:url("/dust2-dragon-glass-awp.png") center / contain no-repeat; }
 @keyframes puke-ring-glint {
   from { filter: drop-shadow(0 0 2px #ffe168) drop-shadow(0 0 5px #d8aa3266); }
   to { filter: brightness(1.22) drop-shadow(0 0 6px #fff2a1) drop-shadow(0 0 12px #d8aa32cc); }

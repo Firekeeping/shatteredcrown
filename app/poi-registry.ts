@@ -59,6 +59,8 @@ const defaults: Omit<PoiDefinition, "id"> = {
 };
 
 export const POI_REGISTRY: Record<string, PoiDefinition> = {
+  "trash-wizard": { id:"trash-wizard", ...defaults, visibility:"always", panel:{ image:{ src:"/trash-wizard.png", alt:"The Trash Wizard with his scavenged wares", width:1024, height:1536 }, hint:"Choose one item at a time for the active hero. He has enough scavenged stock to outfit the company." } },
+  "fallen-counter-dungeoneer": { id:"fallen-counter-dungeoneer", ...defaults, visibility:"always", panel:{ image:{ src:"/dust2-fallen-counter-dungeoneer.png", alt:"A fallen skeletal Counter-Dungeoneer on the dome", width:900, height:685 }, hint:"In the campaign, the fallen sniper's Dragon Glass AWP can be collected from this spot." } },
   "gold-cache": { id: "gold-cache", ...defaults, visualKind: "floor", visibility: "hidden", hideWhenResolved: true, panel: { actions: [{ id: "take-gold-cache", label: "Lift the Tile — Take 25 gp" }] } },
   "golden-spear-mimic": { id: "golden-spear-mimic", ...defaults, visibility: "always", action: "trigger-mimic", hideWhenResolved: true },
   "spiked-pit-28d": { id: "spiked-pit-28d", ...defaults, visualKind: "floor", action: "move-onto" },

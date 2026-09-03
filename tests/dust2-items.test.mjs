@@ -21,12 +21,12 @@ test("Dust 2 grants the complete spell-grenade level-five player loadout", async
   assert.equal(items.dust2ItemForSkill("AWP Arc Shot"), null);
 });
 
-test("campaign Level 2 grants Dust 2 gear without changing earned levels", async () => {
+test("campaign Level 2 uses the Trash Wizard and dome pickup without changing earned levels", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const startLevelTwo = page.slice(page.indexOf("const startLevelTwo ="), page.indexOf("if (stage === \"editor\")"));
-  assert.match(startLevelTwo, /grantDust2ItemLoadout/);
-  assert.match(startLevelTwo, /mergeDust2ItemLoadout\(items\[hero\.id\]\)/);
-  assert.match(startLevelTwo, /weapon:"Dragon Glass AWP"[\s\S]*quick1:"Emerald Frag Grenade"[\s\S]*quick2:"Runic Smoke Grenade"/);
+  assert.doesNotMatch(startLevelTwo, /grantDust2ItemLoadout|mergeDust2ItemLoadout/);
+  assert.match(startLevelTwo, /dust2-dome-awp[\s\S]*Dragon Glass AWP/);
+  assert.match(startLevelTwo, /Trash Wizard/);
   assert.doesNotMatch(startLevelTwo, /setLevel\(|heroFromRoster\(/);
 });
 
@@ -44,10 +44,13 @@ test("Dust 2 throwables and the AWP own executable registry mechanics", async ()
   assert.equal(ITEM_REGISTRY["Dragon Glass AWP"].weapon.hands, 2);
   assert.equal(ITEM_REGISTRY["Dragonfire Deagle"].weapon.hands, 1);
   assert.equal(ITEM_REGISTRY["Dragonfire Deagle"].weapon.range, 10);
+  assert.equal(ITEM_REGISTRY["The One True Flag"].weapon.range, 1);
+  assert.equal(ITEM_REGISTRY["The One True Flag"].skill.name, "Democratic Thrust");
+  assert.equal(ITEM_REGISTRY["The One True Flag"].equipment.visualMode, "overlay");
 });
 
 test("approved Dust 2 item art has real transparency", async () => {
-  for (const asset of ["dust2-frag-grenade.png", "dust2-molotov.png", "dust2-dragon-glass-awp.png", "dust2-dragonfire-deagle.png"]) {
+  for (const asset of ["dust2-frag-grenade.png", "dust2-molotov.png", "dust2-dragon-glass-awp.png", "dust2-dragonfire-deagle.png", "one-true-flag-spear.png", "trash-wizard.png", "dust2-fallen-counter-dungeoneer.png"]) {
     const metadata = await sharp(fileURLToPath(new URL(`../public/${asset}`, import.meta.url))).metadata();
     assert.equal(metadata.hasAlpha, true, `${asset} must preserve alpha`);
   }

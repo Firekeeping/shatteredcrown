@@ -49,7 +49,7 @@ import { buildVillageSightCrossings } from "./battlefield-vision-runtime";
 import { DUST2_FLAG_SITES, DUST2_SECRET_EXIT, advanceDust2Defuse, advanceDust2FlagCountdown, cancelDust2Defuse, createDust2ObjectiveState, dropDust2Flag, dust2CountdownRounds, dust2FlagCarrierBonus, dust2FlagSiteAt, dust2LooseFlagPosition, pickUpDust2Flag, plantDust2Flag, type Dust2ObjectiveState } from "./dust2-objective";
 import { Dust2ObjectiveMarkers, Dust2ObjectivePanel, ObjectiveTracker } from "./objective-tracker"; import ActiveUnitHud from "./active-unit-hud";
 import { buildCounterDungeoneerSquad, COUNTER_DUNGEONEER_ACTOR_IDS, counterDungeoneerWeaponFinish } from "./counter-dungeoneers"; import { useCounterDungeoneerContact } from "./use-counter-dungeoneer-contact"; import { levelTwoFalseVictoryUnits, levelTwoJohnWickIsDown } from "./level-two-objective-runtime"; import { levelTwoExitIsOpen, levelTwoFalseVictoryEvents, levelTwoJohnWickDefeatEvents } from "./level-two-objective-state";
-import { DUST2_HERO_LEVEL, DUST2_ITEM_LOADOUT, dust2ItemForSkill, grantDust2ItemLoadout, mergeDust2ItemLoadout } from "./dust2-items"; import Dust2FreeplaySetup from "./dust2-freeplay-setup"; import Dust2FreeplayResult from "./dust2-freeplay-result"; import { completeDust2FreeplayRound, createDust2FreeplayMatch, dust2TeamSide, type Dust2FreeplayMatch, type Dust2TeamId } from "./dust2-modes";
+import { DUST2_HERO_LEVEL, DUST2_ITEM_LOADOUT, dust2ItemForSkill, grantDust2ItemLoadout } from "./dust2-items"; import Dust2FreeplaySetup from "./dust2-freeplay-setup"; import Dust2FreeplayResult from "./dust2-freeplay-result"; import { completeDust2FreeplayRound, createDust2FreeplayMatch, dust2TeamSide, type Dust2FreeplayMatch, type Dust2TeamId } from "./dust2-modes";
 import { buildDust2FreeplayDeployment, dust2FactionForUnit, dust2FreeplayWinnerForUnits, dust2ObjectiveAiPlan, resetDust2FreeplayUnits } from "./dust2-freeplay-runtime";
 import { battlefieldForState } from "./battlefield-engine"; import { DELVER_ORIENTATION_MESSAGE, FINAL_PRACTICAL_MESSAGE, NIMRAITH_QUESTIONS, SCHOOL_QUIZ_QUESTIONS } from "./scene-content";
 import { BRIDGE_LANDMARKS, DUNGEON_LANDMARKS, inProximityBombRoom, type ProximityBombVisualState } from "./map-landmarks";
@@ -316,6 +316,11 @@ export default function Home() {
   const battlefield = battlefieldForState({ campaign, campaignScene, mapVariant, trainingMap });
   const currentTerrain = battlefield.terrain, currentHeight = battlefield.elevationFt;
   const pointsOfInterest: PointOfInterest[] = useMemo(() => {
+    if (campaignScene === 9)
+      return [
+        { id:"trash-wizard", name:"The Trash Wizard", x:13, y:30, kind:"clue", text:"A soot-streaked survivor has built a supply stall from the packs of his dead company. He briefs each new wave, then hands out the scavenged weapons, bombs, and spell grenades they choose. He intends every item to avenge its former owner." },
+        { id:"fallen-counter-dungeoneer", name:"Fallen Counter-Dungeoneer", x:24, y:12, kind:"clue", text:"A skeletal anti-dungeoneer lies where they fell atop the dome. Their Dragon Glass AWP is still serviceable." },
+      ];
     if (campaignScene === 7)
       return [
         { id: "question-statue", name: "Statue of the Questioner", x: 20, y: 55, kind: "clue", text: resolvedPoi.includes("question-statue") ? "A stern stone scholar watches in silence. Empty grooves remain where the spectacles rested." : "A stern stone scholar wears an extremely unserious pair of spectacles. The plaque reads: ASK BETTER QUESTIONS." },
@@ -1197,6 +1202,20 @@ export default function Home() {
         const equipment = getItemDefinition(item).equipment;
         return equipment ? [{ item, ...equipment }] : [];
       });
+  const supplyDust2Item = (item: string) => {
+    if (!active || active.team !== "hero" || active.npc || active.downed) return;
+    if (heroHasItem(active.id, item)) { setLog((lines) => [`${active.name} already carries ${item}.`, ...lines].slice(0, 6)); return; }
+    grantDungeonLoot(active.id, [item]);
+    const definition = getItemDefinition(item);
+    if (definition.equipment?.slot === "weapon") setEquippedItems((current) => ({ ...current, [active.id]:{ ...(current[active.id] || {}), weapon:item } }));
+    else if (definition.equipment?.slot === "quick") setEquippedItems((current) => { const slots = current[active.id] || {}; const slot = slots.quick1 ? "quick2" : "quick1"; return { ...current, [active.id]:{ ...slots, [slot]:item } }; });
+    setLog((lines) => [`Trash Wizard supplies ${active.name} with ${item}. “Make it count. It belonged to somebody.”`, ...lines].slice(0, 6));
+  };
+  const equipOneTrueFlag = (heroId: string) => {
+    if (!heroHasItem(heroId, "The One True Flag")) grantDungeonLoot(heroId, ["The One True Flag"]);
+    setEquippedItems((current) => ({ ...current, [heroId]:{ ...(current[heroId] || {}), weapon:"The One True Flag" } }));
+    setEquippedDialogueItems((current) => ({ ...current, [heroId]:"The One True Flag" }));
+  };
   const awardDungeonXp = (enemyXp: number, _finisherId?: string, sourceId?: string) => {
     if (!dungeonMode || enemyXp <= 0) return;
     if (sourceId) { if (awardedXpSourcesRef.current.has(sourceId)) return; awardedXpSourcesRef.current.add(sourceId); }
@@ -2087,7 +2106,7 @@ export default function Home() {
   useEffect(() => { if (!levelTwoMode || !firedMapEvents.includes("dust2-john-wick-arrived") || firedMapEvents.includes("dust2-john-wick-defeated") || !levelTwoJohnWickIsDown(units)) return;
     setFiredMapEvents((events) => levelTwoJohnWickDefeatEvents(events, true)); setAmbientMessage("JOHN WICK DEFEATED · RED-ROCK EXIT OPEN"); scheduleCutscene(() => setAmbientMessage(null), 3200); setLog((lines) => ["John Wick falls. The red-rock door unlocks and Level 2's exit is finally open.", ...lines].slice(0, 6)); }, [levelTwoMode, firedMapEvents, units]);
   const dust2RoundWinner = dust2FreeplayMatch ? dust2FreeplayWinnerForUnits(dust2FreeplayMatch, dust2Objective, units) : null;
-  useEffect(() => { const carrier = units.find((unit) => unit.id === dust2Objective.flagCarrierId); if (carrier?.downed) setDust2Objective((state) => dropDust2Flag(state, carrier.id, carrier)); }, [units, dust2Objective.flagCarrierId]);
+  useEffect(() => { const carrier = units.find((unit) => unit.id === dust2Objective.flagCarrierId); if (carrier?.downed) { setDust2Objective((state) => dropDust2Flag(state, carrier.id, carrier)); setDungeonItems((items) => ({ ...items, [carrier.id]:(items[carrier.id] || []).filter((item) => item !== "The One True Flag") })); setEquippedItems((items) => ({ ...items, [carrier.id]:{ ...(items[carrier.id] || {}), weapon:undefined } })); setEquippedDialogueItems((items) => ({ ...items, [carrier.id]:null })); } }, [units, dust2Objective.flagCarrierId]);
   useEffect(() => {
     if (!dust2FreeplayMatch || !dust2RoundWinner || stage !== "battle") return;
     const nextMatch = completeDust2FreeplayRound(dust2FreeplayMatch, dust2RoundWinner);
@@ -3216,6 +3235,9 @@ export default function Home() {
     const planted = plantDust2Flag(dust2Objective, active.id, dust2SiteUnderActive.id, dust2InitiativeCount);
     if (planted === dust2Objective) return;
     setDust2Objective(planted);
+    setDungeonItems((items) => ({ ...items, [active.id]:(items[active.id] || []).filter((item) => item !== "The One True Flag") }));
+    setEquippedItems((items) => ({ ...items, [active.id]:{ ...(items[active.id] || {}), weapon:undefined } }));
+    setEquippedDialogueItems((items) => ({ ...items, [active.id]:null }));
     setAmbientMessage(`THE ONE TRUE FLAG PLANTED · SITE ${dust2SiteUnderActive.id} · 3 ROUNDS`);
     scheduleCutscene(() => setAmbientMessage(null), 2600);
     setLog((lines) => [`${active.name} plants The One True Flag at Site ${dust2SiteUnderActive.id} (${dust2SiteUnderActive.coordinate}). The countdown begins with the next person in initiative.`, ...lines].slice(0, 6));
@@ -4104,6 +4126,7 @@ export default function Home() {
           [active, ...traveledSteps].some((step) => step.x === looseFlagPosition.x && step.y === looseFlagPosition.y);
         if (crossedDust2Flag) {
           setDust2Objective((state) => pickUpDust2Flag(state, active.id));
+          equipOneTrueFlag(active.id);
           setLog((lines) => [`${active.name} picks up The One True Flag. Reach Site A at G6 or Site B at AA7.`, ...lines].slice(0, 6));
         }
         if (dungeonMode && !firedMapEvents.includes("kelim-first-plea-seen") && [active, ...traveledSteps].some((step) => step.x === KELIM_SIGHTING_TRIGGER.x && step.y === KELIM_SIGHTING_TRIGGER.y)) {
@@ -7232,7 +7255,7 @@ export default function Home() {
   const startLevelTwo = () => {
     clearTransientTimers(); setNoticeQueue([]);
     const heroes = units.filter((unit) => unit.team === "hero" && !unit.npc).map((unit) => {
-      return grantDust2ItemLoadout({ ...unit, hp:unit.maxHp, downed:false, skills:unit.skills.map((skill) => skill.dailyCharges ? { ...skill, charges:skill.dailyCharges } : skill) }); });
+      return { ...unit, hp:unit.maxHp, downed:false, skills:unit.skills.map((skill) => skill.dailyCharges ? { ...skill, charges:skill.dailyCharges } : skill) }; });
     heroes.forEach((hero, index) => {
       const [x, y] = dust2PartyStarts[index] || dust2PartyStarts[index % dust2PartyStarts.length];
       Object.assign(hero, { x, y, facing: "n" as Facing }, dust2PositionState({ x, y }));
@@ -7241,8 +7264,7 @@ export default function Home() {
     setDust2FreeplayTeam(null); setDust2FreeplayMatch(null);
     setRoute("dust_2"); setTrainingMap("dust2");
     setUnits([...heroes, ...buildCounterDungeoneerSquad({ includeJohnWick:false })]);
-    setDungeonItems((items) => ({ ...items, ...Object.fromEntries(heroes.map((hero) => [hero.id, mergeDust2ItemLoadout(items[hero.id])])) }));
-    setEquippedItems((current) => ({ ...current, ...Object.fromEntries(heroes.map((hero) => [hero.id, { ...(current[hero.id] || {}), weapon:"Dragon Glass AWP", quick1:"Emerald Frag Grenade", quick2:"Runic Smoke Grenade" }])) }));
+    setDroppedDungeonItems([{ id:"dust2-dome-awp", name:"Dragon Glass AWP", x:24, y:12 }]);
     setEnemyTypes(COUNTER_DUNGEONEER_ACTOR_IDS.filter((name) => name !== "John Wick")); setDust2Objective(createDust2ObjectiveState());
     setEncounterMode("exploration");
     setExitReached(false);
@@ -7263,6 +7285,7 @@ export default function Home() {
     setDust2FreeClimb(false);
     setLog([
       "The throne route opens into Dust 2 at the southern Terrorist spawn.",
+      "A survivor called the Trash Wizard waits beside the spawn. Inspect him and choose supplies for each active hero.",
       "The One True Flag waits behind the company. Carry it to Site A at G6 or Site B at AA7.",
       "Plant the Flag and hold the site for three complete rounds. The red-rock secret exit opens when the countdown reaches zero.",
     ]);
@@ -7844,7 +7867,7 @@ export default function Home() {
     rewarded: currentRoomState === "looted" || currentRoomState === "exhausted",
   });
   const unresolvedDiscoveries = pointsOfInterest.filter((poi) =>
-    discoveredPoiSet.has(poi.id) && !resolvedPoiSet.has(poi.id)).length;
+    discoveredPoiSet.has(poi.id) && !resolvedPoiSet.has(poi.id) && !!getPoiDefinition(poi.id).panel?.actions?.length).length;
   const contentIssues = dungeonPlaytest ? GAME_CONTENT_ISSUES : [];
   const turnResources = turnResourceSummary({
     phase,
@@ -8638,7 +8661,7 @@ export default function Home() {
                       {teleportingUnitId === u.id && <span className="teleport-away-effect" aria-hidden="true" />}
                       {!!u.rageRounds && <span className="rage-ability-vfx" aria-hidden="true" />}
                       {hasEffect(u, "flame-arrows") && <span className="flame-arrows-status-vfx" aria-hidden="true" />}
-                      {dust2Objective.flagCarrierId === u.id && <span className="dust2-carried-flag"><i className="one-true-flag" aria-hidden="true" /><small>FLAG</small></span>}
+                      {dust2Objective.flagCarrierId === u.id && <span className="dust2-carried-flag"><img src="/one-true-flag-spear.png" alt="" /><small>FLAG</small></span>}
                       <PassiveAbilityBadges skills={u.skills} />
                       {u.role === "Training Dummy" ? (
                         <span className="vfx-sandbag-sprite" aria-label="Targetable training sandbag" />
@@ -8761,10 +8784,12 @@ export default function Home() {
                       <em>“{shieldGuardianPassText[(wanderingGuardian?.pass || 1) - 1].speech}”</em>
                     </span>
                   )}
+                  {dust2MapActive && x === 24 && y === 12 && <span className="dust2-dome-corpse" aria-label="Fallen Counter-Dungeoneer" />}
+                  {levelTwoMode && x === 13 && y === 30 && <span className="dust2-trash-wizard" role="button" tabIndex={0} title="Inspect the Trash Wizard" onClick={(event) => { event.stopPropagation(); setInspectPoi("trash-wizard"); }} />}
                   {dropsHere.map((drop) => (
                     <span
                       key={drop.id}
-                      className={drop.contents ? "dungeon-chest-token" : `dropped-item-token ${drop.name === "Potion of Speed" ? "speed-potion-token" : ""} ${drop.name === "Healing Potion" ? "healing-potion-token" : ""} ${drop.name === "Bag of Flour" ? "flour-bag-token" : ""} ${drop.id === "puke-immunity-ring" ? "puke-immunity-ring-token" : ""} ${drop.name === "Blue Lightsaber" ? "blue-lightsaber-token" : ""} ${drop.id.startsWith("portable-proximity-bomb:") ? "portable-proximity-bomb-token" : ""}`}
+                      className={drop.contents ? "dungeon-chest-token" : `dropped-item-token ${drop.name === "Potion of Speed" ? "speed-potion-token" : ""} ${drop.name === "Healing Potion" ? "healing-potion-token" : ""} ${drop.name === "Bag of Flour" ? "flour-bag-token" : ""} ${drop.id === "puke-immunity-ring" ? "puke-immunity-ring-token" : ""} ${drop.name === "Blue Lightsaber" ? "blue-lightsaber-token" : ""} ${drop.name === "Dragon Glass AWP" ? "dragon-glass-awp-token" : ""} ${drop.id.startsWith("portable-proximity-bomb:") ? "portable-proximity-bomb-token" : ""}`}
                       data-chest-state={drop.contents ? (openChestId === drop.id ? "open" : "closed") : undefined}
                       role="button"
                       tabIndex={0}
@@ -9949,6 +9974,11 @@ export default function Home() {
                         : action.label}
                     </button>
                   ))}
+                </div>
+              )}
+              {poi.id === "trash-wizard" && (
+                <div className="heart-actions trash-wizard-wares">
+                  {DUST2_ITEM_LOADOUT.map((item) => <button className="inspect-action" key={item} disabled={!active || active.team !== "hero" || heroHasItem(active.id, item)} onClick={() => supplyDust2Item(item)}>{active && heroHasItem(active.id, item) ? `Carrying ${item}` : `Take ${item}`}</button>)}
                 </div>
               )}
             </div>

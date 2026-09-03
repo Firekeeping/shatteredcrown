@@ -202,6 +202,14 @@ export const ITEM_REGISTRY: Record<string, ItemDefinition> = {
     equipment: { slot:"weapon", visualClass:"dragon-glass-awp-equipped", visualMode:"sprite-variant", label:"Dragon Glass AWP" },
     icon: "/dust2-dragon-glass-awp.png",
   },
+  "The One True Flag": {
+    id: "The One True Flag",
+    description: "Unique democracy spear · 8 + STR or DEX piercing damage. Equip it to carry the compact battle standard and unlock story reactions.",
+    weapon: { baseDamage:8, modifierBonus:1, damageType:"piercing", range:1, abilityChoices:["strength", "dexterity"], proficiency:"martial", hands:2, tags:["melee", "finesse", "magical"], uniqueEffect:"Symbol of Managed Democracy" },
+    skill: skill("Democratic Thrust", 1, 22, 6, 1, "Plant the point—and the principles—into an adjacent enemy.", { unlimited:true, damageType:"piercing" }),
+    equipment: { slot:"weapon", visualClass:"one-true-flag-equipped", visualMode:"overlay", label:"The One True Flag" },
+    icon: "/one-true-flag-spear.png",
+  },
   "Dragonfire Deagle": {
     id: "Dragonfire Deagle",
     description: "One-handed runic hand cannon · 7 + DEX piercing damage · 10-square range.",

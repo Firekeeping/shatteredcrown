@@ -491,7 +491,7 @@ export const progressionSkills: Record<string, Skill[]> = {
   Ranger: [
     { ...s("Favored Enemy", 0, 0, 100, 99, "heal", "Passive: every five kills of a creature type grants +2 attack and damage against it."), automatic: true },
     s("Animal Companion", 0, 0, 100, 1, "heal", "Summon a loyal animal companion into an adjacent open square."),
-    s("Spike Growth", 5, 9, 100, 2, "damage", "Create a damaging difficult-terrain area.", "square"),
+    s("Spike Growth", 8, 9, 100, 2, "damage", "Create a damaging difficult-terrain area up to forty feet away.", "square"),
     s("Fog Cloud", 5, 0, 100, 2, "damage", "Create an area that blocks vision.", "square"),
     s("Goodberry", 2, 8, 100, 3, "heal", "Create restorative berries for allies."),
     s("Longstrider", 3, 0, 100, 3, "heal", "Give one ally +2 movement for the encounter."),
