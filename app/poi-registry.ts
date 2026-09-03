@@ -59,7 +59,7 @@ const defaults: Omit<PoiDefinition, "id"> = {
 };
 
 export const POI_REGISTRY: Record<string, PoiDefinition> = {
-  "gold-cache": { id: "gold-cache", ...defaults, visualKind: "floor", visibility: "hidden", panel: { actions: [{ id: "take-gold-cache", label: "Lift the Tile — Take 25 gp" }] } },
+  "gold-cache": { id: "gold-cache", ...defaults, visualKind: "floor", visibility: "hidden", hideWhenResolved: true, panel: { actions: [{ id: "take-gold-cache", label: "Lift the Tile — Take 25 gp" }] } },
   "golden-spear-mimic": { id: "golden-spear-mimic", ...defaults, visibility: "always", action: "trigger-mimic", hideWhenResolved: true },
   "spiked-pit-28d": { id: "spiked-pit-28d", ...defaults, visualKind: "floor", action: "move-onto" },
   "spike-pit-lure-28d": { id: "spike-pit-lure-28d", ...defaults, visualKind: "floor", visibility: "always", action: "move-onto" },
