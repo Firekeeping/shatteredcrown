@@ -174,6 +174,15 @@ export type Unit = {
   combatEffects?: TimedCombatEffect[];
   favoredEnemyKills?: Record<string, number>;
   introDamageCap?: number;
+  banished?: {
+    x: number;
+    y: number;
+    surfaceId?: string;
+    elevationFt?: number;
+    returnRound: number;
+    wasIncapacitated: boolean;
+    wasInvisible: boolean;
+  };
 };
 
 export type PointOfInterest = {

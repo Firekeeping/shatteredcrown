@@ -171,6 +171,30 @@ export const ITEM_REGISTRY: Record<string, ItemDefinition> = {
     skill: skill("Throw Smoke Grenade", 8, 0, 100, 1, "Create a 3×3 smoke cloud that blocks vision for three rounds.", { area:"square" }),
     equipment: { slot:"quick", visualClass:"", visualMode:"overlay", label:"Smoke Grenade" },
   },
+  "Frost Grenade": {
+    id: "Frost Grenade",
+    description: "Single-use spell grenade · 3×3 cold blast and slippery difficult terrain · failed CON save reduces movement.",
+    skill: skill("Throw Frost Grenade", 8, 6, 100, 1, "Deal light cold damage in a 3×3 area and leave slippery difficult terrain. A failed Constitution save also reduces movement.", { area:"square", damageType:"cold" }),
+    equipment: { slot:"quick", visualClass:"", visualMode:"overlay", label:"Frost Grenade" },
+  },
+  "Teleport Grenade": {
+    id: "Teleport Grenade",
+    description: "Single-use spell grenade · swap with a creature or teleport to an open impact square.",
+    skill: skill("Throw Teleport Grenade", 8, 0, 100, 1, "Swap positions with the creature at the impact point, or teleport to an open impact square.", { movement:"teleport" }),
+    equipment: { slot:"quick", visualClass:"", visualMode:"overlay", label:"Teleport Grenade" },
+  },
+  "Entangle Grenade": {
+    id: "Entangle Grenade",
+    description: "Single-use spell grenade · creates a 3×3 restraining plant zone for three rounds.",
+    skill: skill("Throw Entangle Grenade", 8, 0, 100, 1, "Create a 3×3 plant zone. Creatures make a Strength save or become Restrained.", { area:"square" }),
+    equipment: { slot:"quick", visualClass:"", visualMode:"overlay", label:"Entangle Grenade" },
+  },
+  "Banishment Grenade": {
+    id: "Banishment Grenade",
+    description: "Single-use spell grenade · failed CHA save removes one creature for a complete round.",
+    skill: skill("Throw Banishment Grenade", 8, 0, 100, 1, "One creature makes a Charisma save or disappears for one complete round, then returns to the same or nearest open square."),
+    equipment: { slot:"quick", visualClass:"", visualMode:"overlay", label:"Banishment Grenade" },
+  },
   "Dragon Glass AWP": {
     id: "Dragon Glass AWP",
     description: "Two-handed arcane sniper rifle · 10 + DEX piercing damage · 14-square range.",

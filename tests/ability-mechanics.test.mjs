@@ -22,7 +22,7 @@ test("zones, conditions, saves, counters, and companions reach the combat runtim
     assert.ok(conditions.includes(condition));
   assert.match(page, /abilityZones[\s\S]*zoneContains[\s\S]*advanceZones/);
   assert.match(abilities, /"Spike Growth"[^\n]*initialDamage: 10[^\n]*movementDamage: 3/);
-  assert.match(page, /const initialHits = zoneDefinition\.initialDamage[\s\S]*combatDamageOutcome\(unit, hit\.damage\)/);
+  assert.match(page, /const initialHits = \(zoneDefinition\.initialDamage \|\| areaMechanic\.targetCondition \|\| areaMechanic\.targetEffect\)[\s\S]*combatDamageOutcome\(unit, hit\.damage\)[\s\S]*areaMechanic\.targetCondition/);
   assert.match(page, /enemySkill\?\.damageCap[\s\S]*typedDamage \+ extraDamage/);
   assert.match(page, /reactiveDefense[\s\S]*armor-of-agathys[\s\S]*Hellish Rebuke/);
   assert.match(page, /spawnActor\("Dire Wolf"[\s\S]*animal-companion/);

@@ -8,6 +8,10 @@ export const DUST2_ITEM_LOADOUT = [
   "Crystal Flashbang",
   "Alchemical Molotov",
   "Runic Smoke Grenade",
+  "Frost Grenade",
+  "Teleport Grenade",
+  "Entangle Grenade",
+  "Banishment Grenade",
   "Dragon Glass AWP",
   "Dragonfire Deagle",
 ] as const;

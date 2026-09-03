@@ -22,6 +22,7 @@ import { attackDistance as attackDist, buildMovementCostField, findWeightedRoute
 import { ABILITY_LABELS, armorClassOf, attackBonusOf, criticalDamage, d20HitChance, damageAfterProtection, initiativeModifierOf, proficiencyBonus, resolveD20Attack, resolveSavingThrow, skillCheckBonus, spellSaveDc } from "./dnd-rules";
 import { advanceConditionDurations, applyCondition, conditionAttackAdvantage, conditionAttackDisadvantage, conditionForcesAdjacentCritical, conditionGrantsIncomingAdvantage, conditionGrantsIncomingDisadvantage, conditionLimitsVision, conditionPreventsSpeech, effectiveMovement, hasCondition, removeCondition, resolveOngoingConditions, unitCannotAct } from "./condition-runtime";
 import { abilityStrikeProfile, advanceTimedEffects, advanceZones, applyGrantedEffect, cannotMakeOpportunityAttack, cleanseConditions, consumeFlameArrowAttack, effectArmorClassBonus, favoredEnemyBonus, flameArrowShotsRemaining, FLAME_ARROWS_ATTACKS, FLAME_ARROWS_DAMAGE, hasEffect, isMagicalAbility, mechanicFor, removeEffect, zoneContains, type AbilityZone } from "./ability-runtime";
+import { banishWithGrenade, returnBanishedUnits, swapTeleportGrenadePositions } from "./spell-grenade-runtime";
 import { monsterCanPerceive, monsterIgnoresTerrain, monsterMovementModes, monsterTraitEffects, normalizeMonsterRuntime, rechargeMonsterSkills } from "./monster-runtime";
 import { canEnemySeeHero as enemyCanSeeHero, chooseEnemyAbility, enemyThreatRange, rankEnemyTargets } from "./enemy-ai";
 import { useGameStateTransitions } from "./use-game-state-transitions";
@@ -3201,6 +3202,7 @@ export default function Home() {
         };
         return { ...unit, rageRounds: unit.rageRounds - 1 };
       }));
+      setUnits((current) => returnBanishedUnits(current, round + 1, (point, returningId, allUnits) => point.x >= 0 && point.y >= 0 && point.x < boardCols && point.y < boardRows && !currentBlocked.has(key(point.x, point.y)) && !allUnits.some((unit) => unit.id !== returningId && !unit.downed && !unit.banished && unitOccupiesTile(unit, point.x, point.y))));
       setRound((r) => r + 1);
       const firstLiving = order.findIndex((u) => !u.downed);
       setTurn(Math.max(0, firstLiving));
@@ -3421,9 +3423,9 @@ export default function Home() {
     const areaMechanic = mechanicFor(skill.name);
     if (areaMechanic?.zone) {
       const zoneDefinition = areaMechanic.zone, multiplier = spellMultiplier(active, skill);
-      const initialHits = zoneDefinition.initialDamage ? units.filter((unit) => unit.team !== active.team && unit.team !== "neutral" && !unit.downed && canTakeCombatDamage(unit) && tiles.some((tile) => unitOccupiesTile(unit, tile.x, tile.y))).map((target) => ({ target, damage: damageAfterProtection(target, zoneDefinition.initialDamage! * multiplier, zoneDefinition.damageType) })) : [];
+      const initialHits = (zoneDefinition.initialDamage || areaMechanic.targetCondition || areaMechanic.targetEffect) ? units.filter((unit) => unit.team !== active.team && unit.team !== "neutral" && !unit.downed && canTakeCombatDamage(unit) && tiles.some((tile) => unitOccupiesTile(unit, tile.x, tile.y))).map((target) => { const save = areaMechanic.save ? abilitySavingThrow(active, target, areaMechanic.save.ability) : null; const rawDamage = zoneDefinition.initialDamage ? zoneDefinition.initialDamage * multiplier : 0; const damage = damageAfterProtection(target, save?.success ? areaMechanic.save?.halfDamage ? Math.floor(rawDamage / 2) : 0 : rawDamage, zoneDefinition.damageType); return { target, damage, save }; }) : [];
       setAbilityZones((zones) => [...zones.filter((zone) => zone.sourceId !== active.id || zone.name !== skill.name), { ...zoneDefinition, initialDamage: undefined, roundDamage: zoneDefinition.roundDamage ? zoneDefinition.roundDamage * multiplier : undefined, roundHealing: zoneDefinition.roundHealing ? zoneDefinition.roundHealing * multiplier : undefined, movementDamage: zoneDefinition.movementDamage ? zoneDefinition.movementDamage * multiplier : undefined, id: `${skill.id || skill.name}:${active.id}:${round}`, sourceId: active.id, sourceTeam: active.team, tiles, segment: visualFrom ? { a: visualFrom, b: { x, y } } : undefined }]);
-      setUnits((current) => current.map((unit) => { const hit = initialHits.find((entry) => entry.target.id === unit.id); return hit ? { ...unit, ...combatDamageOutcome(unit, hit.damage), lastDamagerId: active.id, lastDamageType: zoneDefinition.damageType } : unit.id === active.id ? { ...unit, skills: unit.skills.map((entry, index) => index === skillIndex && !entry.unlimited ? { ...entry, charges: Math.max(0, entry.charges - 1) } : entry) } : unit; }));
+      setUnits((current) => current.map((unit) => { const hit = initialHits.find((entry) => entry.target.id === unit.id); if (hit) { let affected = { ...unit, ...combatDamageOutcome(unit, hit.damage), lastDamagerId: hit.damage ? active.id : unit.lastDamagerId, lastDamageType: hit.damage ? zoneDefinition.damageType : unit.lastDamageType }; if (!hit.save?.success && areaMechanic.targetEffect) affected = applyGrantedEffect(affected, areaMechanic.targetEffect, active.id, unit.id); if (!hit.save?.success && areaMechanic.targetCondition) affected = applyCondition(affected, areaMechanic.targetCondition.condition, { sourceId: active.id, durationRounds: areaMechanic.targetCondition.durationRounds }); return affected; } return unit.id === active.id ? { ...unit, skills: unit.skills.map((entry, index) => index === skillIndex && !entry.unlimited ? { ...entry, charges: Math.max(0, entry.charges - 1) } : entry) } : unit; }));
       initialHits.forEach(({ target, damage }) => { const feedback = damageFloat(damage); pushCombatFloat(target.id, feedback.text, feedback.tone); if (damage) animateSprite(target.id, "damage", 520); if (damage >= target.hp) awardDungeonXp(target.xpReward || xpForCr(target.cr), active.id, target.id); });
       setAbilityVfx({ name: skill.name, from: visualFrom || visualCaster, to: { x, y }, tiles, nonce: runtimeNow() }); scheduleCutscene(() => setAbilityVfx(null), 1800);
       const consumedItem = dust2ItemForSkill(skill.name); if (consumedItem) removeDungeonItem(active.id, consumedItem); recordHeroCombat(active.id, { abilitiesUsed: 1, damageDealt: initialHits.reduce((sum, { target, damage }) => sum + Math.min(damage, Math.max(0, target.hp)), 0) }); setLog((lines) => [`${active.name} creates ${skill.name} for ${zoneDefinition.remainingRounds} rounds.${initialHits.length ? ` Its opening blast hits ${initialHits.length} ${initialHits.length === 1 ? "enemy" : "enemies"}.` : ""}`, ...lines].slice(0, 6)); setChosen(null); setPhase("facing"); return;
@@ -3635,6 +3637,12 @@ export default function Home() {
       setChosen(null); setPhase("facing"); return;
     }
     if (sk && isMagicalAbility(sk) && conditionPreventsSpeech(active)) { setLog((lines) => [`${active.name} is Silenced and cannot cast ${sk.name}. The charge was not spent.`, ...lines].slice(0, 6)); return; }
+    if (sk?.name === "Throw Banishment Grenade") {
+      const save = abilitySavingThrow(active, target, "charisma");
+      setUnits((current) => current.map((unit) => unit.id === target.id && !save.success ? banishWithGrenade(unit, round) : unit.id === active.id ? { ...unit, skills: unit.skills.map((ability, index) => index === chosen.i ? { ...ability, charges: Math.max(0, ability.charges - 1) } : ability) } : unit));
+      removeDungeonItem(active.id, "Banishment Grenade"); animateSprite(active.id, "cast", 650); setAbilityVfx({ name: sk.name, from: active, to: target, nonce: runtimeNow() }); scheduleCutscene(() => setAbilityVfx(null), 1500);
+      setLog((lines) => [`${target.name} rolls CHA ${save.total} vs DC ${save.dc}: ${save.success ? "resists the Banishment Grenade" : "vanishes for one complete round"}.`, ...lines].slice(0, 6)); setChosen(null); setPhase("facing"); return;
+    }
     if (sk && mechanic?.requiresUnacted && (round > 1 || order.findIndex((unit) => unit.id === target.id) <= turn)) { setLog((lines) => [`${target.name} has already acted in this combat. Assassinate was not spent.`, ...lines].slice(0, 6)); return; }
     if (sk && active.team === "hero" && !active.npc)
       recordHeroCombat(active.id, { abilitiesUsed: 1 });
@@ -3929,10 +3937,16 @@ export default function Home() {
       setWallStart(null); resolveArea(selectedSkill, chosen!.i!, end.x, end.y, placement.tiles, wallStart); return;
     }
     if (phase === "action" && active && selectedSkill?.movement === "teleport" && chosen?.kind === "skill") {
-      const destination = dust2MapActive ? dust2PreferredPositionAt(active, x, y) : { x, y }, occupied = units.some((unit) => unit.id !== active.id && (!dust2MapActive || dust2SharesSurface(unit, destination)) && unitOccupiesTile(unit, x, y));
+      const destination = dust2MapActive ? dust2PreferredPositionAt(active, x, y) : { x, y }, teleportTarget = selectedSkill.name === "Throw Teleport Grenade" ? units.find((unit) => unit.id !== active.id && !unit.downed && (!dust2MapActive || dust2SharesSurface(unit, destination)) && unitOccupiesTile(unit, x, y)) : undefined, occupied = units.some((unit) => unit.id !== active.id && (!dust2MapActive || dust2SharesSurface(unit, destination)) && unitOccupiesTile(unit, x, y));
+      if (teleportTarget && attackDist(active, teleportTarget) <= effectiveSkillRange(active, selectedSkill) && clearLine(active, teleportTarget)) {
+        const [movedCaster, movedTarget] = swapTeleportGrenadePositions(active, teleportTarget);
+        setUnits((current) => current.map((unit) => unit.id === active.id ? { ...movedCaster, skills: movedCaster.skills.map((skill, index) => index === chosen.i ? { ...skill, charges: Math.max(0, skill.charges - 1) } : skill) } : unit.id === teleportTarget.id ? movedTarget : unit));
+        removeDungeonItem(active.id, "Teleport Grenade"); setAbilityVfx({ name:selectedSkill.name, from:active, to:teleportTarget, nonce:runtimeNow() }); scheduleCutscene(() => setAbilityVfx(null), 1500); setLog((lines) => [`${active.name} swaps places with ${teleportTarget.name}.`, ...lines].slice(0, 6)); setChosen(null); setPhase("facing"); return;
+      }
       const error = kelimTeleportIssue({ charges: selectedSkill.charges, sameTile: x === active.x && y === active.y && (!dust2MapActive || dust2SamePosition(active, destination)), distance: attackDist(active, destination), range: vfxGalleryMode ? Math.max(boardCols, boardRows) : effectiveSkillRange(active, selectedSkill), open: !(dungeonMode && (!dungeonOpen.has(key(x, y)) || (!dungeonPlaytest && !revealedTileSet.has(key(x, y))))) && !currentBlocked.has(key(x, y)), occupied, visible: vfxGalleryMode || clearLine(active, destination) });
       if (error) { setLog((lines) => [error, ...lines].slice(0, 6)); return; }
       setUnits((current) => current.map((unit) => unit.id === active.id ? { ...unit, ...destination, ...(dust2MapActive ? dust2PositionState(destination) : {}), skills: unit.skills.map((skill, index) => index === chosen.i ? { ...skill, charges: Math.max(0, skill.charges - 1) } : skill) } : unit));
+      if (selectedSkill.name === "Throw Teleport Grenade") removeDungeonItem(active.id, "Teleport Grenade");
       setAbilityVfx({ name: selectedSkill.name, from: { x: active.x, y: active.y }, to: { x, y }, nonce: runtimeNow() });
       scheduleCutscene(() => setAbilityVfx(null), 1600);
       if (selectedSkill.name !== "Leap of the Clouds") { setTeleportingUnitId(active.id); scheduleCutscene(() => setTeleportingUnitId(null), 1650); }

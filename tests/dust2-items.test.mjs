@@ -10,12 +10,12 @@ const bundle = async (entry) => {
   return import(`data:text/javascript;base64,${Buffer.from(output.outputFiles[0].text).toString("base64")}`);
 };
 
-test("Dust 2 grants the complete six-item level-five player loadout", async () => {
+test("Dust 2 grants the complete spell-grenade level-five player loadout", async () => {
   const items = await bundle("../app/dust2-items.ts");
   assert.equal(items.DUST2_HERO_LEVEL, 5);
-  assert.deepEqual([...items.DUST2_ITEM_LOADOUT], ["Emerald Frag Grenade", "Crystal Flashbang", "Alchemical Molotov", "Runic Smoke Grenade", "Dragon Glass AWP", "Dragonfire Deagle"]);
+  assert.deepEqual([...items.DUST2_ITEM_LOADOUT], ["Emerald Frag Grenade", "Crystal Flashbang", "Alchemical Molotov", "Runic Smoke Grenade", "Frost Grenade", "Teleport Grenade", "Entangle Grenade", "Banishment Grenade", "Dragon Glass AWP", "Dragonfire Deagle"]);
   const loaded = items.grantDust2ItemLoadout({ id:"hero", skills:[] });
-  assert.deepEqual(loaded.skills.map((skill) => skill.name), ["Throw Frag Grenade", "Throw Flashbang", "Throw Molotov", "Throw Smoke Grenade"]);
+  assert.deepEqual(loaded.skills.map((skill) => skill.name), ["Throw Frag Grenade", "Throw Flashbang", "Throw Molotov", "Throw Smoke Grenade", "Throw Frost Grenade", "Throw Teleport Grenade", "Throw Entangle Grenade", "Throw Banishment Grenade"]);
   assert.deepEqual(items.mergeDust2ItemLoadout(["Ration", "Dragon Glass AWP"]), ["Ration", "Dragon Glass AWP", ...items.DUST2_ITEM_LOADOUT.filter((item) => item !== "Dragon Glass AWP")]);
   assert.equal(items.dust2ItemForSkill("Throw Smoke Grenade"), "Runic Smoke Grenade");
   assert.equal(items.dust2ItemForSkill("AWP Arc Shot"), null);
@@ -36,6 +36,10 @@ test("Dust 2 throwables and the AWP own executable registry mechanics", async ()
   assert.equal(ITEM_REGISTRY["Crystal Flashbang"].skill.power, 0);
   assert.equal(ITEM_REGISTRY["Alchemical Molotov"].skill.damageType, "fire");
   assert.equal(ITEM_REGISTRY["Runic Smoke Grenade"].skill.range, 8);
+  assert.equal(ITEM_REGISTRY["Frost Grenade"].skill.damageType, "cold");
+  assert.equal(ITEM_REGISTRY["Teleport Grenade"].skill.movement, "teleport");
+  assert.equal(ITEM_REGISTRY["Entangle Grenade"].skill.area, "square");
+  assert.equal(ITEM_REGISTRY["Banishment Grenade"].skill.range, 8);
   assert.equal(ITEM_REGISTRY["Dragon Glass AWP"].weapon.range, 14);
   assert.equal(ITEM_REGISTRY["Dragon Glass AWP"].weapon.hands, 2);
   assert.equal(ITEM_REGISTRY["Dragonfire Deagle"].weapon.hands, 1);

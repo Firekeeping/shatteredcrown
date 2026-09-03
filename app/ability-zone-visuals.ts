@@ -9,6 +9,8 @@ const ZONE_ASSET: Readonly<Record<string, string>> = {
   "Healing Spirit": "/vfx-healing-spirit.png",
   "Wind Wall": "/vfx-wind-wall.png",
   "Plant Growth": "/vfx-plant-growth.png",
+  "Frost Grenade": "/vfx-frost-lance.webp",
+  "Entangle Grenade": "/vfx-plant-growth.png",
 };
 
 export const abilityZoneSliceStyle = (zone: AbilityZone, point: { x: number; y: number }) => {
