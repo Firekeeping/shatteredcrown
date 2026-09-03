@@ -38,7 +38,11 @@ test("two-player sessions commit complete guest turns while the host runs autono
   assert.match(hook, /api\(\{ op: "poll", id: sessionId, token: secret \}\)/);
   assert.doesNotMatch(hook, /setInterval\(\(\) => void poll/);
   assert.match(route, /body\.op === "poll"[\s\S]*sessionResponse/);
-  assert.match(route, /body\.op === "resolve"[\s\S]*handled_seq = MAX\(handled_seq/);
+  assert.match(route, /body\.op === "resolve"[\s\S]*handled_seq = \?/);
+  assert.match(route, /body\.op === "publish"[\s\S]*session\.command_seq > session\.handled_seq[\s\S]*guest turn is still updating/, "host snapshots must not race a pending guest turn");
+  assert.match(route, /body\.op === "resolve"[\s\S]*pendingCommand\.baseRevision !== session\.revision/, "guest snapshots must commit against their accepted revision");
+  assert.match(route, /WHERE id = \? AND revision = \? AND command_seq = \? AND handled_seq < \?/, "guest resolution must atomically claim the exact pending command");
+  assert.match(route, /command_json = NULL/, "committed guest commands must not remain replayable");
   assert.match(hook, /pendingGuestCommand\.current > 0[\s\S]*setRequestPending\(false\)/);
   assert.match(hook, /addEventListener\("shattered-crown-save", submitGuestState\)/);
   assert.match(hook, /type: "state"[\s\S]*baseRevision: revision\.current[\s\S]*snapshot: JSON\.parse\(queued\)/);
