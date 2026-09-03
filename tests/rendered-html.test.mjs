@@ -237,6 +237,19 @@ test("story maps present their full scenery without vision fog", async () => {
   assert.match(css, /\.dungeon-board \.cell\.terrain-dungeon-floor:not\(\.fogged\) \{[\s\S]*?z-index: 1;/);
 });
 
+test("Continue Campaign reads the local save instead of treating the click event as a multiplayer snapshot", async () => {
+  const source = await readGameSource();
+  assert.match(source, /<button onClick=\{\(\) => continueCampaign\(\)\}>/);
+  assert.doesNotMatch(source, /<button onClick=\{continueCampaign\}>/);
+});
+
+test("wall-mounted art is visible only from the exposed face of its wall", async () => {
+  const source = await readGameSource();
+  assert.match(source, /mount\.side === "n" \? unit\.y < mount\.host\.y/);
+  assert.match(source, /mount\.side === "s" \? unit\.y > mount\.host\.y/);
+  assert.match(source, /mount\.side === "e" \? unit\.x > mount\.host\.x : unit\.x < mount\.host\.x/);
+});
+
 test("the poisoned-wolf feeding scene stays visible before the heroes emerge", async () => {
   const source = await readGameSource();
   assert.match(source, /storyVisionDisabled = villageMapActive \|\| dungeonMode \|\| poisonCutscene/);
