@@ -2059,7 +2059,7 @@ export default function Home() {
     [units, encounterMode],
   );
   const initiativeOrder = order.filter((u) => u.team === "hero" || !u.downed);
-  const active = order[turn] || order[0], storyVisionDisabled = villageMapActive || dungeonMode || poisonCutscene, playerView = useBattlefieldPlayerView({
+  const active = order[turn] || order[0], storyVisionDisabled = villageMapActive || poisonCutscene, playerView = useBattlefieldPlayerView({
     enabled:stage === "battle" && !storyVisionDisabled, scopeOverride:dust2FreeplayActive ? "selected" : undefined, memoryNamespace:dust2FreeplayActive ? active?.id : undefined,
     battlefield,
     blocked:currentBlocked,
