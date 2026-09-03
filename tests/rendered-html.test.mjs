@@ -220,10 +220,11 @@ test("Undermountain playtest exposes no-fog teleport controls", async () => {
   assert.doesNotMatch(source, /room\.bubble \|\| "Intruders!"/);
 });
 
-test("story maps present their full scenery without vision fog", async () => {
+test("village story scenes stay open while the dungeon retains exploration fog", async () => {
   const source = await readGameSource();
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
-  assert.match(source, /storyVisionDisabled = villageMapActive \|\| dungeonMode \|\| poisonCutscene/);
+  assert.match(source, /storyVisionDisabled = villageMapActive \|\| poisonCutscene/);
+  assert.doesNotMatch(source, /storyVisionDisabled = villageMapActive \|\| dungeonMode/);
   assert.match(source, /enabled:stage === "battle" && !storyVisionDisabled/);
   assert.match(source, /!playerView\.enabled \|\| playerView\.hasLineOfSight\(unit, mount\.host, true\)/);
   assert.match(source, /disabled=\{dungeonMode && \(!tileRevealed \|\| !dungeonOpen\.has\(key\(x, y\)\)\)\}/);
@@ -252,7 +253,7 @@ test("wall-mounted art is visible only from the exposed face of its wall", async
 
 test("the poisoned-wolf feeding scene stays visible before the heroes emerge", async () => {
   const source = await readGameSource();
-  assert.match(source, /storyVisionDisabled = villageMapActive \|\| dungeonMode \|\| poisonCutscene/);
+  assert.match(source, /storyVisionDisabled = villageMapActive \|\| poisonCutscene/);
   assert.match(source, /setPoisonCutscene\(true\)[\s\S]*setUnits\(wolves\)/);
   assert.match(source, /setPoisonCutscene\(false\)[\s\S]*return \[\.\.\.heroes, \.\.\.returnedWolves\]/);
 });
@@ -804,7 +805,7 @@ test("the R62 hollow tile reveals gold without a separate corner stash", async (
   assert.match(source, /const westernSecretDoor = \{ x: 14, y: 61 \}/);
   assert.match(source, /const westernGoldCache = \{ x: 17, y: 61 \}/);
   assert.match(source, /crossedHollowGoldTile[\s\S]*?showDialogueBubble\(active\.id, "Click\. That floor tile is hollow\."\)/);
-  assert.match(source, /"gold-cache"[\s\S]*visualKind: "floor"[\s\S]*visibility: "hidden"/);
+  assert.match(source, /"gold-cache"[\s\S]*visualKind: "floor"[\s\S]*visibility: "hidden"[\s\S]*hideWhenResolved: true/);
   assert.match(source, /className="hollow-floor-tile-art"/);
   assert.match(css, /\.poi-token\.poi-id-gold-cache[\s\S]*\.hollow-floor-tile-art/);
   assert.match(source, /grantDungeonLoot\(consciousActive\.id, \["25 gp"\]\)/);
