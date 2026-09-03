@@ -7282,7 +7282,7 @@ export default function Home() {
       >
         <div className="deployment-choice">
           {hasSave && (
-            <button onClick={continueCampaign}>
+            <button onClick={() => continueCampaign()}>
               <b>Continue Campaign</b>
               <small>
                 Resume from the latest automatically saved turn or story choice.
@@ -8411,7 +8411,7 @@ export default function Home() {
                 wallMountsHere = dungeonMode ? (DUNGEON_WALL_MOUNTS_BY_TILE.get(key(x, y)) || []).filter((mount) => {
                   const event = mount.secretDoorEdge && dungeonSecretDoorEventByEdge.get(dungeonEdgeKey(mount.secretDoorEdge)); return !event || !firedMapEvents.includes(event);
                 }) : [],
-                visibleWallMountsHere = wallMountsHere.filter((mount) => units.some((unit) => unit.team === "hero" && !unit.npc && !unit.downed && dist(unit, mount.host) <= 5 && (!playerView.enabled || playerView.hasLineOfSight(unit, mount.host, true)) && (mount.side === "n" ? unit.y >= mount.host.y : mount.side === "s" ? unit.y <= mount.host.y : mount.side === "e" ? unit.x <= mount.host.x : unit.x >= mount.host.x))),
+                visibleWallMountsHere = wallMountsHere.filter((mount) => units.some((unit) => unit.team === "hero" && !unit.npc && !unit.downed && dist(unit, mount.host) <= 5 && (!playerView.enabled || playerView.hasLineOfSight(unit, mount.host, true)) && (mount.side === "n" ? unit.y < mount.host.y : mount.side === "s" ? unit.y > mount.host.y : mount.side === "e" ? unit.x > mount.host.x : unit.x < mount.host.x))),
                 staticDungeonPropsHere = dungeonMode
                   ? dungeonSceneryPropsByTile.get(key(x, y)) || []
                   : [],
